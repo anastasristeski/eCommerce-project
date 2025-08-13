@@ -1,5 +1,7 @@
-package com.example.eCommerceBackend.Models;
+package com.example.eCommerceBackend.Models.Product;
 
+import com.example.eCommerceBackend.Models.Attributes;
+import com.example.eCommerceBackend.Models.PriceItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +26,19 @@ public abstract class Product {
     @Column(length = 5000)
     private String description;
     private String brand;
+
+    public void setAttributes(List<Attributes> attributes) {
+        this.attributes = attributes;
+    }
+
+    public void setPriceItems(List<PriceItem> priceItems) {
+        this.priceItems = priceItems;
+    }
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Attributes> attributes;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<PriceItem> priceItems;
     public Product(){}
     public abstract String getCategory();
 

@@ -1,9 +1,7 @@
 package com.example.eCommerceBackend.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.example.eCommerceBackend.Models.Product.Product;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -12,8 +10,9 @@ public class PriceItem {
     @Id
     @GeneratedValue
     private Long id;
-
     private String amount;
-    @OneToMany
+    @OneToMany(mappedBy = "priceItem", cascade = CascadeType.ALL)
     private List<Currency> currencies;
+    @ManyToOne
+    private Product product;
 }

@@ -1,9 +1,7 @@
 package com.example.eCommerceBackend.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.example.eCommerceBackend.Models.Product.Product;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -12,8 +10,10 @@ public class Attributes {
     @Id
     @GeneratedValue
     private Long genId;
-    @OneToMany
+    @OneToMany(mappedBy = "attributes", cascade = CascadeType.ALL)
     List<Attribute> attributes;
+    @ManyToOne
+    private Product product;
     public Attributes(){}
     public Attributes(Long genId, List<Attribute> attributes) {
         this.genId = genId;

@@ -12,7 +12,7 @@ public class Attribute {
     private Long genId;
 
     private String id;
-    @OneToMany(mappedBy = "genId")
+    @OneToMany(mappedBy = "attribute")
     private List<Item> items;
     private String name;
     private String type;
