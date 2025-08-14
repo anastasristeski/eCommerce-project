@@ -1,5 +1,6 @@
 package com.example.eCommerceBackend.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +13,10 @@ public class Item {
     private Long genId;
     private String id;
     @ManyToOne
+    @JsonBackReference
+
     private Attribute attribute;
+
     public Item (){
 
     }
@@ -22,6 +26,14 @@ public class Item {
         this.value = value;
         this.id = id;
         this.attribute = attribute;
+    }
+
+    public void setGenId(Long genId) {
+        this.genId = genId;
+    }
+
+    public Long getGenId() {
+        return genId;
     }
 
     public Item(String displayValue, String value, String id) {

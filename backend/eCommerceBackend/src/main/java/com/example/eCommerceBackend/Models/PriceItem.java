@@ -1,6 +1,8 @@
 package com.example.eCommerceBackend.Models;
 
 import com.example.eCommerceBackend.Models.Product.Product;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,8 +14,12 @@ public class PriceItem {
     private Long id;
     private String amount;
     @OneToMany(mappedBy = "priceItem", cascade = CascadeType.ALL)
+    @JsonManagedReference
+
     private List<Currency> currencies;
     @ManyToOne
+    @JsonBackReference
+
     private Product product;
 
     public PriceItem(Long id, String amount, List<Currency> currencies, Product product) {

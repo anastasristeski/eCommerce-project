@@ -2,6 +2,7 @@ package com.example.eCommerceBackend.Models.Product;
 
 import com.example.eCommerceBackend.Models.Attributes;
 import com.example.eCommerceBackend.Models.PriceItem;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,8 +31,12 @@ public abstract class Product {
 
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
+
     private List<Attributes> attributes;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<PriceItem> priceItems;
     public Product(){}
     public abstract String getCategory();

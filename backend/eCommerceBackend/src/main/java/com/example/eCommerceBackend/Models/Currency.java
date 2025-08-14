@@ -1,5 +1,6 @@
 package com.example.eCommerceBackend.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -13,6 +14,8 @@ public class Currency {
     private String label;
     private String symbol;
     @ManyToOne
+    @JsonBackReference
+
     private PriceItem priceItem;
     public Currency(){}
     public Currency(Long id, String label, String symbol, PriceItem priceItem) {

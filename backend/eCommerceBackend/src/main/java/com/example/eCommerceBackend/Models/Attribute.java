@@ -1,5 +1,7 @@
 package com.example.eCommerceBackend.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,11 +14,15 @@ public class Attribute {
     private Long genId;
 
     private String id;
-    @OneToMany(mappedBy = "attribute")
+    @OneToMany(mappedBy = "attribute", cascade = CascadeType.ALL)
+    @JsonManagedReference
+
     private List<Item> items;
     private String name;
     private String type;
     @ManyToOne
+    @JsonBackReference
+
     private Attributes attributes;
     public Attribute(){}
 
