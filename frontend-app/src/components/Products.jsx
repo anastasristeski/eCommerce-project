@@ -3,35 +3,36 @@ import axiosClient from "../api/axiosClient";
 import ProductCard from "./ProductCard";
 import { useParams } from "react-router-dom";
 
-export default function ProductsAll(){
-    const [products, setProducts] = useState([]);
-    const { category } = useParams();
+export default function ProductsAll() {
+  const [products, setProducts] = useState([]);
+  const { category } = useParams();
 
-      
+  const title = category ? category.toUpperCase() : "ALL PRODUCTS";
+
   useEffect(() => {
     const fetchProducts = async () => {
-    try {
+      try {
         const url = category ? `/products?category=${category}` : "/products";
 
-      const response = await axiosClient.get(url);
+        const response = await axiosClient.get(url);
 
-      if (response.status === 200) {
-
-        setProducts(response.data);
+        if (response.status === 200) {
+          setProducts(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch products", error);
       }
-    } catch (error) {
-      console.error("Failed to fetch products", error);
-    }
-  };
+    };
     fetchProducts();
   }, [category]);
-    return (
-        <div className="main-div-wrapper">
-        <div className="main-div">
-             {products.map((product, index) => (
-          <ProductCard key={index} {...product}/>
+  return (
+    <div className="main-div-wrapper">
+      <p className="main-page-title">{title}</p>
+      <div className="main-div">
+        {products.map((product, index) => (
+          <ProductCard key={index} {...product} />
         ))}
-        </div>
-        </div>
-    );
+      </div>
+    </div>
+  );
 }

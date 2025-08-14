@@ -35,32 +35,4 @@ export default function ProductPage() {
     </div>
   );
 }
-{
-  /* <h1 className="item-name">{product.name}</h1>
-      <p className="product-price">
-        {product.currency}
-        {product.price}
-      </p>
-      <div className="items-grid">
-        {product.attributeDtoList.map((attr, index) => (
-          <div className="attributes"><h2 key={index}>{attr.name}</h2>
-          <ul>
-            {attr.itemsList.map((item, index)=>(
-                <li key={index}>{item.displayValue}</li>
-            ))}
-          </ul>
-          </div>
-        ))}
-      </div>
-      <div>{product.description}</div>
-      <div className="images-grid">
-        {product.gallery.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt="Product picture"
-            className="detailsPictures"
-          />
-        ))}
-      </div> */
-}
+

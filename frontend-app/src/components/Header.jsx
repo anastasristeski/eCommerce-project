@@ -1,20 +1,21 @@
-import { Link } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import logo from "../assets/VSF.png";
 import cart from "../assets/Vector.png";
 export default function Header() {
+
   return (
     <header className="header">
       <div className="header-elements">
         <ul className="header-left">
-          <Link to="/products/clothes">
+          <NavLink to="/products/clothes"  className={({ isActive }) => isActive ? "active-link" : ""}>
             <li>CLOTHES</li>
-          </Link>
-          <Link to="/products/tech">
+          </NavLink>
+          <NavLink to="/products/tech"  className={({ isActive }) => isActive ? "active-link" : ""}>
             <li>TECH</li>
-          </Link>
-          <Link to="/">
+          </NavLink>
+          <NavLink to="/"  className={({ isActive }) => isActive ? "active-link" : ""}>
             <li>ALL</li>
-          </Link>
+          </NavLink>
         </ul>
         <div className="header-logo">  <img src={logo} alt="Logo" /></div>
         <div className="header-cart"><img src={cart} alt="Cart" /></div>
