@@ -1,10 +1,11 @@
 package com.example.eCommerceBackend.DataReader;
 
-import com.example.eCommerceBackend.Models.Attributes;
-import com.example.eCommerceBackend.Models.PriceItem;
+import com.example.eCommerceBackend.Models.*;
 import com.example.eCommerceBackend.Models.Product.Clothes;
 import com.example.eCommerceBackend.Models.Product.Product;
+import com.example.eCommerceBackend.Models.Product.TechProduct;
 import com.example.eCommerceBackend.Repositories.ProductRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -24,35 +25,101 @@ public class DataSeeder implements CommandLineRunner {
         this.productRepository = productRepository;
         this.objectMapper = objectMapper;
     }
+
     @Override
-    public void run(String ...args) throws IOException {
-        if(productRepository.count()==0){
+    public void run(String... args) throws IOException {
+        if (productRepository.count() == 0) {
             InputStream inputStream = getClass().getResourceAsStream("/static/data.json");
             JsonNode rootNode = objectMapper.readTree(inputStream);
             JsonNode productsNode = rootNode.path("data").path("products");
             List<Product> products = new ArrayList<>();
-            for(JsonNode productNode: productsNode){
+            for (JsonNode productNode : productsNode) {
                 String category = productNode.path("category").asText();
                 Product product;
-                if(category.equalsIgnoreCase("clothes")){
+                if (category.equalsIgnoreCase("clothes")) {
                     product = objectMapper.treeToValue(productNode, Clothes.class);
-                    product.setAttributes(mapAttributes(productNode,product));
-                    product.setPriceItems(mapPrices(productNode, product));
-                    products.add(product);
+                } else if (category.equalsIgnoreCase("tech")) {
+                    product = objectMapper.treeToValue(productNode, TechProduct.class);
+                } else {
+                    continue;
                 }
+                product.setAttributes(mapAttributes(productNode, product));
+                product.setPriceItems(mapPrices(productNode, product));
+                products.add(product);
             }
             productRepository.saveAll(products);
         }
     }
-    private List<Attributes> mapAttributes(JsonNode productNode, Product product){
+
+    private List<Attributes> mapAttributes(JsonNode productNode, Product product) {
         List<Attributes> attributesList = new ArrayList<>();
+        JsonNode attributesJsonArray = productNode.path("attributes");
+        if (attributesJsonArray.isArray()) {
+            for (JsonNode attributeJson : attributesJsonArray) {
+                Attributes attributesSet = new Attributes();
+                attributesSet.setProduct(product);
+
+                Attribute attribute = new Attribute();
+                attribute.setId(attributeJson.path("id").asText());
+                attribute.setName(attributeJson.path("name").asText());
+                attribute.setType(attributeJson.path("type").asText());
+                attribute.setAttributes(attributesSet);
+
+
+                List<Item> itemsList = new ArrayList<>();
+                JsonNode itemsJson = attributeJson.path("items");
+                if (itemsJson.isArray()) {
+                    for (JsonNode itemJson : itemsJson) {
+                        Item item = new Item();
+                        item.setDisplayValue(itemJson.path("displayValue").asText());
+                        item.setValue(itemJson.path("value").asText());
+                        item.setId(itemJson.path("id").asText());
+                        item.setAttribute(attribute);
+                        itemsList.add(item);
+                    }
+                }
+                attribute.setItems(itemsList);
+
+                List<Attribute> singleAttributeList = new ArrayList<>();
+                singleAttributeList.add(attribute);
+                attributesSet.setAttributes(singleAttributeList);
+
+                attributesList.add(attributesSet);
+            }
+        }
+
         return attributesList;
     }
-    private List<PriceItem> mapPrices(JsonNode productNode, Product product) {
+
+    private List<PriceItem> mapPrices(JsonNode productNode, Product product) throws JsonProcessingException {
         List<PriceItem> priceItems = new ArrayList<>();
-        // Logic to map JSON to PriceItem and Currency entities
-        // ...
+        JsonNode pricesNode = productNode.path("prices");
+        if (pricesNode.isArray()) {
+            for (JsonNode priceJson : pricesNode) {
+                PriceItem priceItem = new PriceItem();
+                priceItem.setAmount(priceJson.path("amount").asText());
+                priceItem.setProduct(product);
+                List<Currency> currencies = new ArrayList<>();
+                JsonNode currencyJson = priceJson.path("currency");
+                if (currencyJson.isArray()) {
+                    for (JsonNode currencyNode : currencyJson) {
+                        Currency currency = objectMapper.treeToValue(currencyNode, Currency.class);
+                        currency.setPriceItem(priceItem);
+                        currencies.add(currency);
+                    }
+                } else if (currencyJson.isObject()) {
+                    Currency currency = new Currency();
+                    currency.setLabel(currencyJson.path("label").asText());
+                    currency.setSymbol(currencyJson.path("symbol").asText());
+                    currency.setPriceItem(priceItem);
+                    currencies.add(currency);
+                }
+                priceItem.setCurrencies(currencies);
+                priceItems.add(priceItem);
+            }
+
+        }
         return priceItems;
     }
-}
 
+}

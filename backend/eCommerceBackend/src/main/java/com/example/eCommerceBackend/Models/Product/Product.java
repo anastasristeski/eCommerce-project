@@ -27,13 +27,7 @@ public abstract class Product {
     private String description;
     private String brand;
 
-    public void setAttributes(List<Attributes> attributes) {
-        this.attributes = attributes;
-    }
 
-    public void setPriceItems(List<PriceItem> priceItems) {
-        this.priceItems = priceItems;
-    }
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Attributes> attributes;
@@ -76,6 +70,13 @@ public abstract class Product {
 
     public boolean isInStock() {
         return inStock;
+    }
+    public void setAttributes(List<Attributes> attributes) {
+        this.attributes = attributes;
+    }
+
+    public void setPriceItems(List<PriceItem> priceItems) {
+        this.priceItems = priceItems;
     }
 
     public List<String> getGallery() {

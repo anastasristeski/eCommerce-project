@@ -19,4 +19,28 @@ public class Attributes {
         this.genId = genId;
         this.attributes = attributes;
     }
+
+    public Long getGenId() {
+        return genId;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setGenId(Long genId) {
+        this.genId = genId;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
