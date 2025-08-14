@@ -1,0 +1,66 @@
+//components
+
+@use "./header.scss";
+@use "./productsCard.scss";
+@use "./productdetails.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Patrick+Hand+SC&display=swap');
+
+//pages
+
+
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Patrick+Hand+SC&display=swap');
+
+
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+p,
+a,
+small,
+input {
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: 0;
+
+
+}
+* {
+  //outline: 1px solid red;
+  box-sizing:border-box;
+}
+html{
+  font-family: 'Oxygen';
+
+}
+
+body{
+  height: 100%;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+input, textarea{
+    &:focus {
+      outline: none;
+    }
+}
