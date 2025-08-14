@@ -20,7 +20,7 @@ public class Attribute {
     private List<Item> items;
     private String name;
     private String type;
-        @ManyToOne
+    @ManyToOne
     @JsonBackReference
     private Product product;
     public Attribute(){}

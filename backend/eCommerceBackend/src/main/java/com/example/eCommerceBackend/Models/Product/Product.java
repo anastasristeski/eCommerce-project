@@ -27,9 +27,6 @@ public abstract class Product {
     @Column(length = 5000)
     private String description;
     private String brand;
-
-
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
 
@@ -38,10 +35,15 @@ public abstract class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<PriceItem> priceItems;
+    private String category;
     public Product(){}
 
     public void setGenId(Long genId) {
         this.genId = genId;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public void setAttributes(List<Attribute> attributes) {
