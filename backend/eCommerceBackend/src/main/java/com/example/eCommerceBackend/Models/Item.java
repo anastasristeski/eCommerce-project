@@ -14,7 +14,6 @@ public class Item {
     private String id;
     @ManyToOne
     @JsonBackReference
-
     private Attribute attribute;
 
     public Item (){

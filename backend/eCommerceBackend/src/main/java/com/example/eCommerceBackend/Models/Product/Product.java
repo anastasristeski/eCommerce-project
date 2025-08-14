@@ -1,6 +1,6 @@
 package com.example.eCommerceBackend.Models.Product;
 
-import com.example.eCommerceBackend.Models.Attributes;
+import com.example.eCommerceBackend.Models.Attribute;
 import com.example.eCommerceBackend.Models.PriceItem;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -33,12 +33,33 @@ public abstract class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
 
-    private List<Attributes> attributes;
+    private List<Attribute> attributes;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<PriceItem> priceItems;
     public Product(){}
+
+    public void setGenId(Long genId) {
+        this.genId = genId;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
+    }
+
+    public Long getGenId() {
+        return genId;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public List<PriceItem> getPriceItems() {
+        return priceItems;
+    }
+
     public abstract String getCategory();
 
     public void setId(String id) {
@@ -75,9 +96,6 @@ public abstract class Product {
 
     public boolean isInStock() {
         return inStock;
-    }
-    public void setAttributes(List<Attributes> attributes) {
-        this.attributes = attributes;
     }
 
     public void setPriceItems(List<PriceItem> priceItems) {

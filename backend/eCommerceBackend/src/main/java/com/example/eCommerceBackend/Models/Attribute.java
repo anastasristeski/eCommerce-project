@@ -1,5 +1,6 @@
 package com.example.eCommerceBackend.Models;
 
+import com.example.eCommerceBackend.Models.Product.Product;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -16,23 +17,28 @@ public class Attribute {
     private String id;
     @OneToMany(mappedBy = "attribute", cascade = CascadeType.ALL)
     @JsonManagedReference
-
     private List<Item> items;
     private String name;
     private String type;
-    @ManyToOne
+        @ManyToOne
     @JsonBackReference
-
-    private Attributes attributes;
+    private Product product;
     public Attribute(){}
 
-    public Attribute(Long genId, String id, List<Item> items, String name, String type, Attributes attributes) {
+    public Attribute(Long genId, String id, List<Item> items, String name, String type) {
         this.genId = genId;
         this.id = id;
         this.items = items;
         this.name = name;
         this.type = type;
-        this.attributes = attributes;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 
     public void setGenId(Long genId) {
@@ -55,9 +61,7 @@ public class Attribute {
         this.type = type;
     }
 
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
-    }
+
 
     public Long getGenId() {
         return genId;
@@ -79,7 +83,5 @@ public class Attribute {
         return type;
     }
 
-    public Attributes getAttributes() {
-        return attributes;
-    }
+
 }

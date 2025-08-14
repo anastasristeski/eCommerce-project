@@ -51,43 +51,37 @@ public class DataSeeder implements CommandLineRunner {
         }
     }
 
-    private List<Attributes> mapAttributes(JsonNode productNode, Product product) {
-        List<Attributes> attributesList = new ArrayList<>();
-        JsonNode attributesJsonArray = productNode.path("attributes");
-        if (attributesJsonArray.isArray()) {
-            for (JsonNode attributeJson : attributesJsonArray) {
-                Attributes attributesSet = new Attributes();
-                attributesSet.setProduct(product);
+    private List<Attribute> mapAttributes(JsonNode productNode, Product product) {
+        List<Attribute> attributesList = new ArrayList<>();
+        JsonNode attributeJson = productNode.path("attributes");
 
-                Attribute attribute = new Attribute();
-                attribute.setId(attributeJson.path("id").asText());
-                attribute.setName(attributeJson.path("name").asText());
-                attribute.setType(attributeJson.path("type").asText());
-                attribute.setAttributes(attributesSet);
+        if (attributeJson.isArray()) {
+            for (JsonNode outerAttributeJson : attributeJson) {
+
+                        Attribute attribute = new Attribute();
+                        attribute.setId(outerAttributeJson.path("id").asText());
+                        attribute.setName(outerAttributeJson.path("name").asText());
+                        attribute.setType(outerAttributeJson.path("type").asText());
+                        attribute.setProduct(product);
+
+                        List<Item> itemsList = new ArrayList<>();
+                        JsonNode itemsJson = outerAttributeJson.path("items");
+                        if (itemsJson.isArray()) {
+                            for (JsonNode itemJson : itemsJson) {
+                                Item item = new Item();
+                                item.setDisplayValue(itemJson.path("displayValue").asText());
+                                item.setValue(itemJson.path("value").asText());
+                                item.setId(itemJson.path("id").asText());
+                                item.setAttribute(attribute);
+                                itemsList.add(item);
+                            }
+                        }
+                        attribute.setItems(itemsList);
+                        attributesList.add(attribute);
 
 
-                List<Item> itemsList = new ArrayList<>();
-                JsonNode itemsJson = attributeJson.path("items");
-                if (itemsJson.isArray()) {
-                    for (JsonNode itemJson : itemsJson) {
-                        Item item = new Item();
-                        item.setDisplayValue(itemJson.path("displayValue").asText());
-                        item.setValue(itemJson.path("value").asText());
-                        item.setId(itemJson.path("id").asText());
-                        item.setAttribute(attribute);
-                        itemsList.add(item);
-                    }
-                }
-                attribute.setItems(itemsList);
-
-                List<Attribute> singleAttributeList = new ArrayList<>();
-                singleAttributeList.add(attribute);
-                attributesSet.setAttributes(singleAttributeList);
-
-                attributesList.add(attributesSet);
             }
         }
-
         return attributesList;
     }
 
