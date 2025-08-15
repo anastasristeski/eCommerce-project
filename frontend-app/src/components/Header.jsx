@@ -1,7 +1,8 @@
 import {  NavLink } from "react-router-dom";
 import logo from "../assets/VSF.png";
-import cart from "../assets/Vector.png";
-export default function Header() {
+import Cart from "./Cart";
+
+export default function Header({cartItems}) {
 
   return (
     <header className="header">
@@ -18,7 +19,7 @@ export default function Header() {
           </NavLink>
         </ul>
         <div className="header-logo">  <img src={logo} alt="Logo" /></div>
-        <div className="header-cart"><img src={cart} alt="Cart" /></div>
+        <Cart cartItems={cartItems}/>
       </div>
     </header>
   );

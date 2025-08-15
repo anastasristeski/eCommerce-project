@@ -15,7 +15,7 @@ export default function ProductPage() {
         const response = await axiosClient.get(url);
 
         if (response.status === 200) {
-          console.log(response.data);
+
           setProduct(response.data);
         }
       } catch (error) {

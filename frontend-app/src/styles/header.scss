@@ -4,7 +4,7 @@
     font-size: 16px;
     font-weight: 400;
     padding: 20px 70px;
-
+ 
     .header-elements{
         display: flex;
         justify-content: space-between;
@@ -34,4 +34,34 @@
   padding-bottom: 8px;
 }
    
+}
+.header-cart {
+  position: relative;
+  display: inline-block;
+
+  img {
+    height: 30px; 
+  }
+
+  .cart-quantity {
+    position: absolute;
+    top: -5px;    
+    right: -5px;  
+    width: 20px;  
+    height: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+.cart-items-list{   
+    position: absolute;
+    right: 30px;
+    top: 80;
+    background-color: white;
 }
