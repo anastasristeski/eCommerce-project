@@ -23,11 +23,34 @@ export default function RootLayout(){
 
     });
   };
+   const incrementItem = (item) => handleAddToCart(item);
+    const decrementItem =(item)=>{
+        setCartItems((prev)=>{
+            const existingIndex = prev.findIndex(
+                (i)=> 
+                    i.name === item.name && JSON.stringify(i.values) === JSON.stringify(item.values)
+            );
+            if(existingIndex >= 0){
+                const newCart = [...prev];
+                const currentQty = newCart[existingIndex].quantity;
+                if(currentQty <= 1){
+                    newCart.splice(existingIndex, 1);
+                }else{
+                    newCart[existingIndex]={
+                        ...newCart[existingIndex],
+                        quantity: currentQty -1,
+                    };
+                }
+                return newCart;
+            }
+            return prev;
+        });
+    }
     return (
        <div className="app-conainer">
-        <Header cartItems = {cartItems} />
+        <Header cartItems = {cartItems} incrementItem={incrementItem} decrementItem={decrementItem}/>
        <main >
-         <Outlet context={{handleAddToCart, cartItems}} />
+         <Outlet context={{handleAddToCart,incrementItem, decrementItem, cartItems}} />
        </main>
         </div>
     );
