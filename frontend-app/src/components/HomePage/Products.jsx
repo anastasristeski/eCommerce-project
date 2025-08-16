@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import ProductCard from "./ProductCard";
 import { useParams } from "react-router-dom";
 
-export default function ProductsAll() {
+export default function Products() {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
 

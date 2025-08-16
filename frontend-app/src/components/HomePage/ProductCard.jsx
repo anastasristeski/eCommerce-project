@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/Common.png";
+import logo from "../../assets/Common.png";
 
 export default function ProductCard({ ...props }) {
   return (

@@ -1,5 +1,5 @@
 import {  NavLink } from "react-router-dom";
-import logo from "../assets/VSF.png";
+import logo from "../../assets/VSF.png";
 import Cart from "./Cart";
 
 export default function Header({cartItems, incrementItem, decrementItem}) {

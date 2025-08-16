@@ -6,10 +6,13 @@ import { useOutletContext } from "react-router-dom";
 export default function ProductDetailsMain({  product  }) {
     const {handleAddToCart} = useOutletContext();
     const [selectedValues, setSelectedValues] = useState({});
+    const [mainImage, setMainImage] = useState(product?.gallery[0]);
+
 const addCurrentProductToCart=()=>{
     console.log(product);
     handleAddToCart({
         name: product.name,
+        attributes: product.attributeDtoList,
         values: selectedValues,
         currency: product.currency,
         price: product.price,
@@ -28,13 +31,17 @@ const addCurrentProductToCart=()=>{
             key={index}
             src={image}
             alt="Product picture"
-            className="detailsPictures"
+
+            onClick={()=>setMainImage(image)}
+            //className="detailsPictures"
+            className={`detailsPictures ${mainImage === image ? "active-thumb" : ""}`}
+
           />
         ))}
       </div>
       <div className="main-right-wrapper">
         <img
-          src={product.gallery[0]}
+          src={mainImage}
           alt="mainImage"
           className="main-image"
         ></img>

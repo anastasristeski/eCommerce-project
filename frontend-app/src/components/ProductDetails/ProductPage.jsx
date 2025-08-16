@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import ProductDetailsMain from "./ProductDetailsMain";
 export default function ProductPage() {
   const [product, setProduct] = useState(null);

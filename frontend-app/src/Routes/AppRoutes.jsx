@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import Products from "../components/Products";
+import Products from "../components/HomePage/Products";
 import RootLayout from '../components/RootLayout';
-import ProductPage from '../components/ProductPage';
+import ProductPage from '../components/ProductDetails/ProductPage';
 export default function AppRoutes(){
     return (
       <Router>
