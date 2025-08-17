@@ -28,21 +28,16 @@ public class ProductService {
                         product.getGenId(),
                         product.getGallery().get(0),product.getName(),
                         product.getPriceItems().get(0).getAmount(),
-                        product.getPriceItems().get(0).getCurrencies().get(0).getSymbol()
+                        product.getPriceItems().get(0).getCurrencies().get(0).getSymbol(),
+                        product.getAttributes().stream().map(this::mapAttributeToDto).toList(),
+                        product.getCategory(),
+                        product.isInStock()
                 ))
                 .toList();
     }
     public List<ProductListDto> getByCategory(String category){
-        return productRepository.findAllByCategory(category)
-                .stream()
-                .map(product -> new ProductListDto(
-                        product.getGenId(),
-                        product.getGallery().get(0),product.getName(),
-                        product.getPriceItems().get(0).getAmount(),
-                        product.getPriceItems().get(0).getCurrencies().get(0).getSymbol()
 
-                ))
-                .toList();
+        return getAllProducts().stream().filter(x->x.category().equalsIgnoreCase(category)).toList();
     }
     public Optional<ProductDetailsDto> getProductDetailsByName(String name){
         return Optional.ofNullable(productRepository.findByName(name)).map(this::mapProductToDetailsDto);
