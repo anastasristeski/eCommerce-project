@@ -29,7 +29,6 @@ public abstract class Product {
     private String brand;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
-
     private List<Attribute> attributes;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)

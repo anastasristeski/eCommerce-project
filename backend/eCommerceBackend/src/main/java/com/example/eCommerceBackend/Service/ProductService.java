@@ -9,8 +9,7 @@ import com.example.eCommerceBackend.Records.ProductDetailsDto;
 import com.example.eCommerceBackend.Records.ProductListDto;
 import com.example.eCommerceBackend.Repositories.ProductRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.w3c.dom.Attr;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -61,9 +60,10 @@ public class ProductService {
                 currency,
                 product.getGallery(),
                 attributeDtos,
-                product.getDescription()
+                product.getDescription(),
+                product.getCategory()
         );
-                //String name, String price, String currency, List<String> gallery,List<AttributeDto>attributeDtoList
+
     }
     private AttributeDto mapAttributeToDto(Attribute attribute){
         List<ItemDto> itemDtos = attribute.getItems().stream()
