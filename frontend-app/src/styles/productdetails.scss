@@ -24,9 +24,8 @@
       object-fit: cover;
     }
     .detailsPictures.active-thumb {
-  border: 1.5px solid #5ece7b; // highlight selected image
-}
-
+      border: 1.5px solid #5ece7b; // highlight selected image
+    }
   }
   .productDetails-name {
     font-size: 30px;
@@ -45,6 +44,10 @@
     font-weight: 700;
     font-size: 24px;
   }
+  .add-to-cart-wrapper{
+    position: relative;
+    display: inline-block;
+  }
   .details-add-to-cart {
     background-color: #5ec37b;
     color: white;
@@ -54,6 +57,13 @@
     height: 52px;
     width: 292px;
   }
+  .details-add-to-cart.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+
+
   .main-right-wrapper {
     display: flex;
     flex-direction: row;

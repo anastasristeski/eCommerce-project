@@ -3,12 +3,19 @@
 export default function ProductItems({  product, selectedValues, setSelectedValues }) {
   
     const handleSelect =(attrName, value)=>{
-        setSelectedValues((prev)=>({
+        setSelectedValues((prev)=>{
+          if(prev[attrName] === value){
+            const newValues={...prev};
+            delete newValues[attrName];
+            return newValues;
+          }
+           return {
             ...prev,
             [attrName]: value,
-        }))
-
-    }
+          };
+    
+    });
+    };
   return (
     <>
     <div className="product-attributes">

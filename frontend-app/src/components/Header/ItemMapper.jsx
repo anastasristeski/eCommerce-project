@@ -13,7 +13,7 @@ export default function ItemMapper({ item, incrementItem, decrementItem }) {
           {item.price}
         </p>
         <p className="wrap-value-name">{item.values.name}</p>
-        {item.attributes.map((attr) => (
+        {Array.isArray(item.attributes) && item.attributes.map((attr) => (
             <div key={attr.name}  className="attr-group">
           <div className="cart-attribute">
             <span className="attr-name">{attr.name}:</span>

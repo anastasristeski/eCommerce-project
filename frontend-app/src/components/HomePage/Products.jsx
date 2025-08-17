@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 export default function Products() {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
-
+ console.log(products);
   const title = category ? category.toUpperCase() : "ALL PRODUCTS";
 
   useEffect(() => {

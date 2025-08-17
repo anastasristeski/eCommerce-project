@@ -2,7 +2,12 @@ import { useState } from "react";
 import cart from "../../assets/Vector.png";
 import ItemMapper from "./ItemMapper";
 
-export default function Cart({ cartItems, incrementItem, decrementItem ,placeOrder}) {
+export default function Cart({
+  cartItems,
+  incrementItem,
+  decrementItem,
+  placeOrder,
+}) {
   const [showCart, setShowCart] = useState(false);
 
   const handleShowCart = () => {
@@ -17,8 +22,6 @@ export default function Cart({ cartItems, incrementItem, decrementItem ,placeOrd
     0
   );
 
-
-
   return (
     <div className="cart-container">
       <div className="header-cart">
@@ -30,7 +33,6 @@ export default function Cart({ cartItems, incrementItem, decrementItem ,placeOrd
       )}
       {showCart && (
         <div className="cart-items-list">
-
           <p className="cart-title">
             <span className="bold">My bag</span>
             <span className="normal">, {totalQuantity} items</span>
@@ -48,7 +50,11 @@ export default function Cart({ cartItems, incrementItem, decrementItem ,placeOrd
             <span className="total-price-value">${totalPrice}</span>
           </div>
           <div className="place-order-wrap">
-            <button onClick={placeOrder}className="place-order-button">PLACE ORDER</button>
+            <button onClick={placeOrder} className="place-order-button"
+            disabled={cartItems.length === 0}
+            >
+              PLACE ORDER
+            </button>
           </div>
         </div>
       )}
