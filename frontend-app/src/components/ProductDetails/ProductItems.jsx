@@ -7,7 +7,7 @@ export default function ProductItems({  product, selectedValues, setSelectedValu
             ...prev,
             [attrName]: value,
         }))
-        console.log(selectedValues);
+
     }
   return (
     <>

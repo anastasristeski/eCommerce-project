@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 export default function ItemMapper({ item, incrementItem, decrementItem }) {
-  console.log("itemslog",item);
+
 
   return (
     <div className="item-wrap">
@@ -13,16 +13,38 @@ export default function ItemMapper({ item, incrementItem, decrementItem }) {
           {item.price}
         </p>
         <p className="wrap-value-name">{item.values.name}</p>
-        {Object.entries(item.values).map(([itemName, itemValue]) => (
-        <div key={itemName} className="cart-items-values">
-            <span className="item-name-cart">{itemName}</span>
-            <button className="item-value-cart">{itemValue}</button>
-        </div>
-        //  <button key={index}>{value}</button>
+        {item.attributes.map((attr) => (
+            <div key={attr.name}  className="attr-group">
+          <div className="cart-attribute">
+            <span className="attr-name">{attr.name}:</span>
+             </div>
+            <div className="buttons-list">{attr.itemsList.map((val) =>
+              attr.name.toLowerCase() === "color" ? (
+                <button
+                  key={val.value}
+                  className={`color-btn ${
+                    item.values[attr.name] === val.value ? "active" : ""
+                  }`}
+                  style={{backgroundColor: val.value}}
+                ></button>
+              ) : (
+                <button
+                  key={val.value}
+                  className={`attr-button ${
+                    item.values[attr.name] === val.value ? "active" : ""
+                  }`}
+                >
+                  {val.value}
+                </button>
+              )
+            )}
+         </div>
+         </div>
         ))}
+        
       </div>
       <div className="item-mid-div">
-        <button className="plus-button" onClick={() => incrementItem(item)}>
+        <button className="plus-btn" onClick={() => incrementItem(item)}>
           {" "}
           <FontAwesomeIcon icon={faPlus} />
         </button>

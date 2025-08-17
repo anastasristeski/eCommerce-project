@@ -2,7 +2,7 @@ import {  NavLink } from "react-router-dom";
 import logo from "../../assets/VSF.png";
 import Cart from "./Cart";
 
-export default function Header({cartItems, incrementItem, decrementItem}) {
+export default function Header({cartItems, incrementItem, decrementItem, placeOrder}) {
 
   return (
     <header className="header">
@@ -19,7 +19,7 @@ export default function Header({cartItems, incrementItem, decrementItem}) {
           </NavLink>
         </ul>
         <NavLink to="/"><div className="header-logo">  <img src={logo} alt="Logo" /></div></NavLink>
-        <Cart cartItems={cartItems} incrementItem={incrementItem} decrementItem={decrementItem}/>
+        <Cart cartItems={cartItems} incrementItem={incrementItem} decrementItem={decrementItem} placeOrder={placeOrder}/>
       </div>
     </header>
   );

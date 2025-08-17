@@ -9,7 +9,7 @@ export default function ProductDetailsMain({  product  }) {
     const [mainImage, setMainImage] = useState(product?.gallery[0]);
 
 const addCurrentProductToCart=()=>{
-    console.log(product);
+
     handleAddToCart({
         name: product.name,
         attributes: product.attributeDtoList,
@@ -31,7 +31,6 @@ const addCurrentProductToCart=()=>{
             key={index}
             src={image}
             alt="Product picture"
-
             onClick={()=>setMainImage(image)}
             //className="detailsPictures"
             className={`detailsPictures ${mainImage === image ? "active-thumb" : ""}`}
