@@ -13,10 +13,10 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // allow all endpoints
-                        .allowedOrigins("http://localhost:5173", "https://stalwart-blancmange-c92410.netlify.app") // allow your frontend
+                        .allowedOrigins("http://localhost:5173", "https://stalwart-blancmange-c92410.netlify.app","http://192.168.0.170:5173") // allow your frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
         };
-    }
+    }//http://192.168.0.170:5173/
 }
