@@ -1,10 +1,13 @@
 
 .main-div-wrapper {
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 30px;
   .main-page-title {
     position: relative;
     top: 150px;
-    left: 15%;
+    left: 10%;
     font-family: "Raleway";
     font-size: 30px;
   }
@@ -12,10 +15,14 @@
     
     display: grid;
     
-    grid-template-columns: repeat(3, 386px);
+    grid-template-columns: repeat(auto-fit, minmax( 386px, 1fr));
+    //grid-template-columns: repeat(3, 386px);
     justify-content: center;
-    gap: 150px;
+
+   // gap: 150px;
+   gap: 150px;
     margin-top: 200px;
+
 
     .product-card {
       position: relative;
@@ -24,7 +31,8 @@
       align-items: flex-start;
       border: none;
       padding: 15px;
-      width: 386px;
+      width: 100%;
+      //width: 386px;
       height: 444px;
       gap: 16px;
       .product-image {
