@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  //baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://e-commerce-backend-base-production.up.railway.app/api',
   headers: {  
     'Accept': 'application/json',
   },
