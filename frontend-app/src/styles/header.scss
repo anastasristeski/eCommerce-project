@@ -24,8 +24,10 @@
     display: flex;
     gap: 20px;
     padding-top: 20px;
+
     li {
-      color: #1d1f22;
+      color: #283c5a;
+
     }
   }
   .active-link li {
@@ -35,10 +37,14 @@
   }
 }
 .cart-container {
+  // height: 40px;
+  // width: 40px;
+ 
   .place-order-wrap {
   width: 100%;
   display: flex;
   justify-content: center;
+
 }
   .place-order-button {
 
@@ -64,6 +70,7 @@
     display: inline-block;
     cursor: pointer;
 
+
     img {
       height: 30px;
     }
@@ -87,13 +94,17 @@
 .item-wrap{
 
     display: flex;
-    align-items: stretch;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    //align-items: stretch;
+    //justify-content: center;
   .wrap-name{
     font-size: 20px;
 
   }
   .wrap-price{
+    font-family: "--price-regular-font";
     font-weight: 400;
     font-size: 18px;
   }
@@ -129,11 +140,12 @@
   position: absolute;
   right: 30px;
   display: flex;
-
+  max-height: 800px;
+  overflow-y: auto;
 
   flex-direction: column;
 
-  align-items: flex-start;
+  align-items: center;
   top: 80px;
   background-color: white;
   z-index: 30;
@@ -165,7 +177,7 @@
 .attr-button {
     width: 32px;
     height: 32px;
-    border: 1px solid #1d1f22;
+    border: 0.5px solid #1d1f22;
     font-family: "Source Sans Pro";
     display: flex;
     align-items: center;
@@ -190,7 +202,8 @@
 
     box-sizing: border-box;
     &.active {
-      border: 3px solid green;
+      //border: 2px solid #5ECE7B;
+       box-shadow: 0 0 0 1.5px #fff, 0 0 0 2px #5ECE7B;
     }
   }}
   .total-price-row{

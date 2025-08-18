@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 export default function Products() {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
- console.log(products);
+
   const title = category ? category.toUpperCase() : "ALL PRODUCTS";
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Products() {
       <p className="main-page-title">{title}</p>
       <div className="main-div">
         {products.map((product, index) => (
-          <ProductCard key={index} {...product} />
+          <ProductCard key={index} product={product} />
         ))}
       </div>
     </div>

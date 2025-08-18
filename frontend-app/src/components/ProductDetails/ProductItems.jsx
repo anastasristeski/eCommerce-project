@@ -32,7 +32,6 @@ export default function ProductItems({  product, selectedValues, setSelectedValu
                 <div className="item" key={itemIndex}>
                   {product.category === "tech" ? (
                     <button
-                      //
                       className={
                         isColor
                           ? `color-value-button${isSelected ? " selected" : ""}`
@@ -46,7 +45,9 @@ export default function ProductItems({  product, selectedValues, setSelectedValu
                             }
                           : {}
                       }
+                      disabled={!product.inStock}
                       onClick={() => handleSelect(attr.name, item.value)}
+
                     >
                       {item.displayValue}
                     </button>

@@ -3,7 +3,7 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 export default function ItemMapper({ item, incrementItem, decrementItem }) {
 
-
+console.log("itemMapper",item);
   return (
     <div className="item-wrap">
       <div className="items-details">
@@ -12,7 +12,7 @@ export default function ItemMapper({ item, incrementItem, decrementItem }) {
           {item.currency}
           {item.price}
         </p>
-        <p className="wrap-value-name">{item.values.name}</p>
+     
         {Array.isArray(item.attributes) && item.attributes.map((attr) => (
             <div key={attr.name}  className="attr-group">
           <div className="cart-attribute">

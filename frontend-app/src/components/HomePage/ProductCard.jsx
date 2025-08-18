@@ -1,42 +1,44 @@
 import { Link, useOutletContext } from "react-router-dom";
 import logo from "../../assets/Common.png";
 
-export default function ProductCard({ ...props }) {
-
+export default function ProductCard({ product }) {
+  console.log("product card check",product.attributesDtoList);
   const{ handleAddToCart} = useOutletContext();
   const getDefaultValues = () =>{
     const defaultValues ={};
-      if (!props.attributesDtoList) return defaultValues;
+      if (!product.attributesDtoList) return defaultValues;
 
-    props.attributesDtoList.forEach(attr =>{
+    product.attributesDtoList.forEach(attr =>{
       if(attr.itemsList.length >0){
         defaultValues[attr.name] = attr.itemsList[0].value;
       }
     });
     return defaultValues;
   };
+
   const addToCartWithDefaults =(event) =>{
     event.preventDefault();
-    
+      event.stopPropagation(); 
     handleAddToCart({
-      name: props.name,
-      attributes: props.attributeDtoList,
-      values: getDefaultValues(),
-      currency: props.currency,
-      price: props.price,
-      image: props.image,
-      inStock: props.inStock,
+      name: product.name,
+      attributes: product.attributesDtoList,
+       values: getDefaultValues(),
+      currency: product.currency,
+      price: product.price,
+      image: product.image,
+      inStock: product.inStock,
+    
     });
   };
   return (
-    <Link to={`/${props.name}`} className={`product-card ${!props.inStock ? "out-of-stock": ""}`}>
+    <Link to={`/${product.name}`} className={`product-card ${!product.inStock ? "out-of-stock": ""}`}>
      <div className="img-wrap">
-      <img src={props.image} alt="cardpicture" className="product-image"/>
-      {!props.inStock &&(
+      <img src={product.image} alt="cardpicture" className="product-image"/>
+      {!product.inStock &&(
         <span className="out-of-stock-text">OUT OF STOCK</span>
       )}
      </div>
-     {props.inStock && (
+     {product.inStock && (
       
       <button onClick ={addToCartWithDefaults}className="cart-icon">
         <img src={logo} alt="cartLogo" />
@@ -44,10 +46,10 @@ export default function ProductCard({ ...props }) {
      )}
      
     
-      <p className="product-name">{props.name}</p>
+      <p className="product-name">{product.name}</p>
       <p className="product-price">
-        {props.currency}
-        {props.price}
+        {product.currency}
+        {product.price}
       </p>
     </Link>
   );

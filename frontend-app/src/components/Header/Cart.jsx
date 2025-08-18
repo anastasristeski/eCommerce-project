@@ -8,6 +8,7 @@ export default function Cart({
   decrementItem,
   placeOrder,
 }) {
+  console.log("CART ITEM CHECKKK!!!",cartItems);
   const [showCart, setShowCart] = useState(false);
 
   const handleShowCart = () => {
@@ -23,13 +24,13 @@ export default function Cart({
   );
 
   return (
-    <div className="cart-container">
+    <div className="cart-container" onClick={handleShowCart} >
       <div className="header-cart">
         <img onClick={handleShowCart} src={cart} alt="Cart" />
         <span className="cart-quantity">{totalQuantity}</span>
       </div>
       {showCart && (
-        <div className="backdrop-overlay" onClick={handleShowCart} />
+        <div className="backdrop-overlay" />
       )}
       {showCart && (
         <div className="cart-items-list">
@@ -47,7 +48,7 @@ export default function Cart({
           ))}
           <div className="total-price-row">
             <span className="total-price-label">TOTAL</span>
-            <span className="total-price-value">${totalPrice}</span>
+            <span className="total-price-value">${totalPrice.toFixed(2)}</span>
           </div>
           <div className="place-order-wrap">
             <button onClick={placeOrder} className="place-order-button"

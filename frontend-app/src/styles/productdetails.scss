@@ -45,8 +45,17 @@
     font-size: 24px;
   }
   .add-to-cart-wrapper{
-    position: relative;
-    display: inline-block;
+  //  position: relative;
+//    display: inline-block;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+.in-stock-warning{
+  padding-bottom: 10px;
+  color: rgba(211, 23, 23, 0.851);
+  font-weight: 700;
+}
   }
   .details-add-to-cart {
     background-color: #5ec37b;
@@ -89,7 +98,7 @@
 }
 
 .attribute-name {
-  font-family: "Roboto Condensed";
+ font-family: "Roboto Condensed";
   font-weight: 700;
   font-size: 18;
   color: #1d1f22;

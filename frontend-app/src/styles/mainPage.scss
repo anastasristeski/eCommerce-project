@@ -1,3 +1,4 @@
+
 .main-div-wrapper {
   width: 100%;
   .main-page-title {
@@ -8,7 +9,9 @@
     font-size: 30px;
   }
   .main-div {
+    
     display: grid;
+    
     grid-template-columns: repeat(3, 386px);
     justify-content: center;
     gap: 150px;

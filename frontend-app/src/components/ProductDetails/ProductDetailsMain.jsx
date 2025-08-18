@@ -19,6 +19,7 @@ export default function ProductDetailsMain({ product }) {
       price: product.price,
       image: product.gallery[0],
     });
+    setSelectedValues({});
   };
 
   if (!product) {
@@ -48,6 +49,7 @@ export default function ProductDetailsMain({ product }) {
             product={product}
             selectedValues={selectedValues}
             setSelectedValues={setSelectedValues}
+
           />
           <span className="item-label">PRICE:</span>
           <span className="details-price">
@@ -55,9 +57,10 @@ export default function ProductDetailsMain({ product }) {
             {product.price}
           </span>
           <div className="add-to-cart-wrapper">
+            {!product.inStock && <span className="in-stock-warning">OUT OF STOCK</span>}
           <button
             onClick={addCurrentProductToCart}
-            className={`details-add-to-cart ${!allSelected ? "disabled": ""}`}
+            className={`details-add-to-cart ${!allSelected || !product.inStock ? "disabled": ""}`}
             disabled={!allSelected}
           >
             Add to cart
