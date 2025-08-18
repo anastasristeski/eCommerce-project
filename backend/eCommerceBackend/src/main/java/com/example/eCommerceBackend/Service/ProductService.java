@@ -56,7 +56,8 @@ public class ProductService {
                 product.getGallery(),
                 attributeDtos,
                 product.getDescription(),
-                product.getCategory()
+                product.getCategory(),
+                product.isInStock()
         );
 
     }
