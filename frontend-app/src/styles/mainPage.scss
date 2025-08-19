@@ -1,4 +1,3 @@
-
 .main-div-wrapper {
   width: 100%;
   overflow-x: hidden;
@@ -7,22 +6,22 @@
   .main-page-title {
     position: relative;
     top: 150px;
-    left: 10%;
+    left: 5%;
     font-family: "Raleway";
     font-size: 30px;
+    color: #1D1F22;
+  
   }
   .main-div {
-    
     display: grid;
-    
-    grid-template-columns: repeat(auto-fit, minmax( 386px, 1fr));
+
+    grid-template-columns: repeat(auto-fit, minmax(386px, 1fr));
     //grid-template-columns: repeat(3, 386px);
     justify-content: center;
 
-   // gap: 150px;
-   gap: 150px;
+    // gap: 150px;
+    gap: 150px;
     margin-top: 200px;
-
 
     .product-card {
       position: relative;
@@ -32,13 +31,23 @@
       border: none;
       padding: 15px;
       width: 100%;
-      //width: 386px;
-      height: 444px;
+      height: auto;
       gap: 16px;
+     .img-wrap{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+     }
       .product-image {
         position: relative;
-        height: 354px;
+        height: 300px;
         margin-bottom: 30px;
+        @media(max-width: 768px){
+          height: 200px;
+
+        }
       }
       .product-name {
         font-family: "Raleway";
@@ -61,15 +70,18 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
+      @media (max-width: 768px) {
+
+      }
     }
   }
 }
 
-.product-card:hover {
-  border: 1px solid #a8acb0;
-  box-shadow: 0 4px 35px 0px rgba(168, 172, 176, 0.19); /* 19% opacity */
-  transform: scale(1.05);
-}
+// .product-card:hover {
+//   border: 1px solid #a8acb0;
+//   box-shadow: 0 4px 35px 0px rgba(168, 172, 176, 0.19); /* 19% opacity */
+//   transform: scale(1.05);
+// }
 .product-card.out-of-stock {
   opacity: 0.5;
   //pointer-events: none;
@@ -87,4 +99,17 @@
 }
 .product-card:hover .cart-icon {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .product-card:hover .cart-icon {
+    opacity: 0;
+  }
+}
+body:not(.no-hover) .product-card:hover {
+  box-shadow: 0 4px 35px 0px rgba(168, 172, 176, 0.19);
+  transform: scale(1.05);
+  .cart-icon {
+    opacity: 1;
+  }
 }
