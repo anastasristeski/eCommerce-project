@@ -30,10 +30,10 @@
     flex-direction: column;
     gap: 10px;
     @media(max-width: 900px){
-
+      
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content:flex-start;
       order: -1;
       width: 100%;
       margin-top: 50px;
