@@ -100,9 +100,7 @@
   box-sizing: border-box;
   //width: 431px;
   @media (max-width: 768px) {
-
     // width: 80%;
-
   }
   .wrap-name {
     font-size: 20px;
@@ -126,7 +124,7 @@
   flex-direction: column;
   gap: 8px;
   width: 190px;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     width: 130px;
   }
 }
@@ -168,7 +166,7 @@
     max-height: 90vh;
     left: 0;
     right: 0;
- overflow-x: hidden;
+    overflow-x: hidden;
   }
   .cart-title {
     font-size: 24px;
@@ -214,11 +212,10 @@
         background-color: #1d1f22;
         color: white;
       }
-      @media(max-width: 700px){
+      @media (max-width: 700px) {
         font-size: 10px;
         width: 32px;
-        height: 32px
-      
+        height: 32px;
       }
     }
     .color-btn {
@@ -233,7 +230,6 @@
         box-shadow: 0 0 0 1.5px #fff, 0 0 0 2px #5ece7b;
       }
     }
-   
   }
   .total-price-row {
     display: flex;
