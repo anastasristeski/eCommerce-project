@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axiosClient from "../../api/axiosClient";
 import ProductCard from "./ProductCard";
 import { useParams } from "react-router-dom";
-import { motion } from "motion/react"
+import { motion } from "framer-motion";
 export default function Products() {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
@@ -37,7 +37,7 @@ export default function Products() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20},
+    hidden: { opacity: 0, y: 30},
     show : { opacity: 1, y:0},
   };
   return (

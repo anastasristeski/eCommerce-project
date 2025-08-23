@@ -1,6 +1,7 @@
 import { useState } from "react";
 import cart from "../../assets/Vector.png";
 import ItemMapper from "./ItemMapper";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Cart({
   cartItems,
@@ -22,6 +23,21 @@ export default function Cart({
     (acc, item) => acc + (item.quantity || 1),
     0
   );
+  const containerVariants={
+    hidden: {opacity: 0},
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+
+    },
+  };
+  const itemVariants={
+    hidden: {opacity: 0, y: 20},
+    show: {opacity: 1, y:0},
+    
+  }
 
   return (
     <div className="cart-container" onClick={handleShowCart} >
@@ -32,20 +48,37 @@ export default function Cart({
       {showCart && (
         <div className="backdrop-overlay" />
       )}
+      <AnimatePresence>
       {showCart && (
-        <div className="cart-items-list">
+        <motion.div 
+        className="cart-items-list"
+        initial ={{opacity: 0, x: 200}}
+        animate = {{opacity: 1, x: 0}}
+        exit ={{opacity: 0, x:200}}
+        transition ={{duration: 0.3}}
+        >
           <p className="cart-title">
             <span className="bold">My bag</span>
             <span className="normal">, {totalQuantity} items</span>
           </p>
+          <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate= "show"
+          >
           {cartItems.map((item, index) => (
+            <motion.div
+            key={index}
+            variants= {itemVariants}
+            >
+
             <ItemMapper
-              key={index}
               item={item}
               incrementItem={incrementItem}
               decrementItem={decrementItem}
-            />
+            /></motion.div>
           ))}
+          </motion.div>
           <div className="total-price-row">
             <span className="total-price-label">TOTAL</span>
             <span className="total-price-value">${totalPrice.toFixed(2)}</span>
@@ -57,8 +90,9 @@ export default function Cart({
               PLACE ORDER
             </button>
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }
