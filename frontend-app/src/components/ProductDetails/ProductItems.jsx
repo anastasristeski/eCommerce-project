@@ -1,5 +1,4 @@
 
-
 export default function ProductItems({  product, selectedValues, setSelectedValues }) {
   
     const handleSelect =(attrName, value)=>{
