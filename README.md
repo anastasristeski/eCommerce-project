@@ -65,9 +65,6 @@ Product
 │ └── Currencies (1:N)
 └── Orders (via OrderItem)
 
-markdown
-Copy code
-
 ---
 
 ## 🖥 Frontend Mapping (Quick Summary)
@@ -129,4 +126,5 @@ Copy code
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 36" src="https://github.com/user-attachments/assets/33c090b6-6bbc-4804-8bd8-505a6360ba4a" />
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 41" src="https://github.com/user-attachments/assets/6d98cc98-0bac-4bed-9800-d12442a1848b" />
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 49" src="https://github.com/user-attachments/assets/8082fac7-284e-4a7c-84c7-89ad1301fcd7" />
+
 
