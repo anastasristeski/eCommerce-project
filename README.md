@@ -116,7 +116,7 @@ Product
 
 ## 🖼️ Screenshots
 
-🖼️ Screenshots<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 17 54" src="https://github.com/user-attachments/assets/d4c3df01-5c98-47b3-94f1-521a6a4d5719" />
+🖼️ Screenshots<img width="1280" height="720" alt="Screenshot 2025-09-09 at 13 17 54" src="https://github.com/user-attachments/assets/d4c3df01-5c98-47b3-94f1-521a6a4d5719" />
 
 
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 02" src="https://github.com/user-attachments/assets/74d6e5b2-f078-4758-8de5-5fcf1044ad76" />
@@ -126,5 +126,6 @@ Product
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 36" src="https://github.com/user-attachments/assets/33c090b6-6bbc-4804-8bd8-505a6360ba4a" />
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 41" src="https://github.com/user-attachments/assets/6d98cc98-0bac-4bed-9800-d12442a1848b" />
 <img width="1680" height="1050" alt="Screenshot 2025-09-09 at 13 18 49" src="https://github.com/user-attachments/assets/8082fac7-284e-4a7c-84c7-89ad1301fcd7" />
+
 
 
